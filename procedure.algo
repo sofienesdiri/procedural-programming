@@ -1,0 +1,30 @@
+PROCEDURE produitScalaire(a,b: ARRAY_OF INTEGER, VAR check:BOOLEAN)
+VAR
+    sum:INTEGER:=0
+BEGIN
+    FOR i FROM 1 TO a.length STEP 1  DO
+        sum:=sum+a[i]*b[i]
+    END_FOR
+    IF (sum=0) THEN
+        check:=TRUE
+    ELSE
+        check:=FALSE
+    END_IF
+END
+ALGORITHM algorithm_principale
+VAR
+    tab1 : ARRAY_OF INTEGER[]:=[1,-4,8,-7]
+    tab2 : ARRAY_OF INTEGER[]:=[5,4,-3,-4]
+    orth_check:BOOLEAN
+BEGIN
+    IF (tab1.length=tab2.length) THEN
+        produitScalaire(tab1,tab2,orth_check)
+        IF (orth_check=TRUE) THEN
+            Write("two vector are orthogonal")
+        ELSE
+            Write("two vectors are not orthogonal")
+        END_IF
+    ELSE
+        Write("ERROR")
+    END_IF
+END
